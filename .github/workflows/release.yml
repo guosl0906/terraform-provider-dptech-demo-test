@@ -39,4 +39,5 @@ jobs:
         env:
           # GitHub sets the GITHUB_TOKEN secret automatically..
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
+          #GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
+          GPG_FINGERPRINT: D849F2C91A35EB7AC1A51E3917703D1675D0A906
