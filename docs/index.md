@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 provider "scaffolding" {
-  # example configuration here
+
 }
 ```
 

@@ -13,6 +13,10 @@ Example data source
 ## Example Usage
 
 ```terraform
+provider "scaffolding" {
+  # example configuration here
+}
+
 data "scaffolding_example" "example" {
   configurable_attribute = "some-value"
 }
@@ -28,3 +32,5 @@ data "scaffolding_example" "example" {
 ### Read-Only
 
 - `id` (String) Example identifier
+
+
