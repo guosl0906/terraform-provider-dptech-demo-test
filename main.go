@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 
 	"terraform-provider-dptech-demo/provider"
@@ -15,6 +16,9 @@ var (
 )
 
 func main() {
+
+	fmt.Println("test content print")
+
 	var debug bool
 
 	flag.BoolVar(&debug, "debug", false, "set to true to run the provider with support for debuggers like ")
