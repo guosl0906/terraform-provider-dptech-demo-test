@@ -6,7 +6,9 @@ terraform {
     }
   }
 
-  features {}
+  features {
+    // 配置的功能
+  }
 }
 
 provider "dptech-demo" {
