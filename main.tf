@@ -5,6 +5,8 @@ terraform {
       version = "1.2.38"
     }
   }
+
+  features {}
 }
 
 provider "dptech-demo" {
