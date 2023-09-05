@@ -1,11 +1,10 @@
 terraform {
   required_providers {
     dptech-demo = {
-      source  = "xieguihua123/dptech-demo"
-      version = "1.2.38"
+      source = "guosl0906/dptech-demo"
+      version = "0.1.5"
     }
   }
-
 }
 
 provider "dptech-demo" {
