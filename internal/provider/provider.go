@@ -1,5 +1,5 @@
 // Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MPL-2.0.
 
 package provider
 
@@ -19,9 +19,7 @@ var _ provider.Provider = &ScaffoldingProvider{}
 
 // ScaffoldingProvider defines the provider implementation.
 type ScaffoldingProvider struct {
-	// version is set to the provider version on release, "dev" when the
-	// provider is built and ran locally, and "test" when running acceptance
-	// testing.
+	// version is set to the provider version on release, "dev" when the provider is built and ran locally, and "test" when running acceptance testing.
 	version string
 }
 
@@ -56,9 +54,8 @@ func (p *ScaffoldingProvider) Configure(ctx context.Context, req provider.Config
 	}
 
 	// Configuration values are now available.
-	// if data.Endpoint.IsNull() { /* ... */ }
 
-	// Example client configuration for data sources and resources
+	// Example client configuration for data sources and resources.
 	client := http.DefaultClient
 	resp.DataSourceData = client
 	resp.ResourceData = client
