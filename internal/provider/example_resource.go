@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0.
-
 package provider
 
 import (
@@ -18,7 +15,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
-// Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ExampleResource{}
 var _ resource.ResourceWithImportState = &ExampleResource{}
 
@@ -26,12 +22,10 @@ func NewExampleResource() resource.Resource {
 	return &ExampleResource{}
 }
 
-// ExampleResource defines the resource implementation.
 type ExampleResource struct {
 	client *http.Client
 }
 
-// ExampleResourceModel describes the resource data model.
 type ExampleResourceModel struct {
 	ConfigurableAttribute types.String `tfsdk:"configurable_attribute"`
 	Defaulted             types.String `tfsdk:"defaulted"`
@@ -44,7 +38,6 @@ func (r *ExampleResource) Metadata(ctx context.Context, req resource.MetadataReq
 
 func (r *ExampleResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		// This description is used by the documentation generator and the language server.
 		MarkdownDescription: "Example resource",
 
 		Attributes: map[string]schema.Attribute{
@@ -70,7 +63,6 @@ func (r *ExampleResource) Schema(ctx context.Context, req resource.SchemaRequest
 }
 
 func (r *ExampleResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
-	// Prevent panic if the provider has not been configured.
 	if req.ProviderData == nil {
 		return
 	}
@@ -92,57 +84,46 @@ func (r *ExampleResource) Configure(ctx context.Context, req resource.ConfigureR
 func (r *ExampleResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
 	var data ExampleResourceModel
 
-	// Read Terraform plan data into the model.
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	// For the purposes of this example code, hardcoding a response value to.
-	// save into the Terraform state.
 	data.Id = types.StringValue("example-id")
 
-	// Write logs using the tflog package.
-	// Documentation: https://terraform.io/plugin/log.
 	tflog.Trace(ctx, "created a resource")
 
-	// Save data into Terraform state.
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *ExampleResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
 	var data ExampleResourceModel
 
-	// Read Terraform prior state data into the model
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	// Save updated data into Terraform state.
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *ExampleResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
 	var data ExampleResourceModel
 
-	// Read Terraform plan data into the model.
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	// Save updated data into Terraform state.
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *ExampleResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
 	var data ExampleResourceModel
 
-	// Read Terraform prior state data into the model.
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {

@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0.
-
 package provider
 
 import (
@@ -14,16 +11,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-// Ensure ScaffoldingProvider satisfies various provider interfaces.
 var _ provider.Provider = &ScaffoldingProvider{}
 
-// ScaffoldingProvider defines the provider implementation.
 type ScaffoldingProvider struct {
-	// version is set to the provider version on release, "dev" when the provider is built and ran locally, and "test" when running acceptance testing.
 	version string
 }
 
-// ScaffoldingProviderModel describes the provider data model.
 type ScaffoldingProviderModel struct {
 	Endpoint types.String `tfsdk:"endpoint"`
 }
@@ -53,9 +46,6 @@ func (p *ScaffoldingProvider) Configure(ctx context.Context, req provider.Config
 		return
 	}
 
-	// Configuration values are now available.
-
-	// Example client configuration for data sources and resources.
 	client := http.DefaultClient
 	resp.DataSourceData = client
 	resp.ResourceData = client
