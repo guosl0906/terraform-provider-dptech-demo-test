@@ -10,3 +10,11 @@ terraform {
 provider "dptech-demo" {
   # Configuration options
 }
+
+# 创建 null_resource 资源
+resource "null_resource" "example" {
+  # 在资源创建过程中执行本地命令
+  provisioner "local-exec" {
+    command = "echo 'Hello, Terraform!'"
+  }
+}

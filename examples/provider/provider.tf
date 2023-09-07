@@ -13,6 +13,6 @@ provider "dptech-demo" {
   name="123"
 }
 
- resource "dptech-demo_example" "a" {
+resource "dptech-demo_example" "a" {
   uuid_count = "3"
 }
