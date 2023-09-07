@@ -8,7 +8,6 @@ import (
 	"time"
 )
 
-// Client -
 type Client struct {
 	HostURL    string
 	HTTPClient *http.Client
@@ -16,13 +15,11 @@ type Client struct {
 	Auth       AuthStruct
 }
 
-// AuthStruct -
 type AuthStruct struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
 
-// AuthResponse -
 type AuthResponse struct {
 	UserID   int    `json:"user_id"`
 	Username string `json:"username"`
@@ -32,8 +29,7 @@ type AuthResponse struct {
 func NewClient(host *string) (*Client, error) {
 	c := Client{
 		HTTPClient: &http.Client{Timeout: 10 * time.Second},
-		// Default Hashicups URL
-		HostURL: *host,
+		HostURL:    *host,
 	}
 
 	req, err := http.NewRequest("POST", c.HostURL, nil)

@@ -12,15 +12,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
-// Ensure ScaffoldingProvider satisfies various provider interfaces.
 var _ provider.Provider = &ScaffoldingProvider{}
 
-// ScaffoldingProvider defines the provider implementation.
 type ScaffoldingProvider struct {
 	version string
 }
 
-// ScaffoldingProviderModel describes the provider data model.
 type ScaffoldingProviderModel struct {
 	Name    types.String `tfsdk:"name"`
 	Address types.String `tfsdk:"address"`
